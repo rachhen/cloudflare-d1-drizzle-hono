@@ -1,0 +1,23 @@
+name = "my-app"
+compatibility_date = "2023-12-01"
+node_compat = true
+
+# [vars]
+# MY_VAR = "my-variable"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+[[d1_databases]]
+binding = "DB"                                       # i.e. available in your Worker on env.DB
+database_name = "drizzle-test-migrations"
+database_id = "93af2490-5e1e-4c04-9699-bf47839b8207"
+migrations_dir = "./src/db/migrations"
+
+# [ai]
+# binding = "AI"
