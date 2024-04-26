@@ -1,9 +1,11 @@
 {
+  "name": "cloudflare-d1-drizzle-hono",
+  "version": "0.0.1",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
     "db:generate": "drizzle-kit generate:sqlite",
-    "db:migrate": "wrangler d1 migrations apply drizzle-test-migrations --local"
+    "db:migrate": "wrangler d1 migrations apply cloudflare-d1-drizzle-hono --local"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.1",

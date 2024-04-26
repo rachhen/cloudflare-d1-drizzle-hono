@@ -1,4 +1,4 @@
-name = "my-app"
+name = "cloudflare-d1-drizzle-hono"
 compatibility_date = "2023-12-01"
 node_compat = true
 
@@ -15,8 +15,8 @@ node_compat = true
 
 [[d1_databases]]
 binding = "DB"                                       # i.e. available in your Worker on env.DB
-database_name = "drizzle-test-migrations"
-database_id = "93af2490-5e1e-4c04-9699-bf47839b8207"
+database_name = "cloudflare-d1-drizzle-hono"
+database_id = "179d351f-4e47-44cf-9400-c8f946374d92"
 migrations_dir = "./src/db/migrations"
 
 # [ai]
