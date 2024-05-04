@@ -6,8 +6,8 @@ import {
   LoginSchema,
   UserSchema,
   VerificationCodeSchema,
-  RequestResetPasswordSchema,
-  NewResetPasswordSchema,
+  ResetPasswordSchema,
+  NewPasswordSchema,
 } from "../schema/auth";
 import { ErrorSchema } from "../schema/error";
 
@@ -121,7 +121,7 @@ export const requestResetPasswordRoute = createRoute({
     body: {
       content: {
         "application/json": {
-          schema: RequestResetPasswordSchema,
+          schema: ResetPasswordSchema,
         },
       },
       required: true,
@@ -158,7 +158,7 @@ export const newResetPasswordRoute = createRoute({
     body: {
       content: {
         "application/json": {
-          schema: NewResetPasswordSchema,
+          schema: NewPasswordSchema,
         },
       },
       required: true,

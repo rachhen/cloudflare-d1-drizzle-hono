@@ -5,8 +5,15 @@ export const tasks = sqliteTable("tasks", {
   id: integer("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
-  completionAt: integer("completion_at"),
+  completionAt: integer("completion_at", { mode: "timestamp" }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id),
 });
+
+export const tasksRelations = relations(tasks, ({ one }) => ({
+  user: one(users, { fields: [tasks.userId], references: [users.id] }),
+}));
 
 export const users = sqliteTable("users", {
   id: text("id").notNull().primaryKey(),
@@ -25,6 +32,7 @@ export type NewUser = typeof users.$inferInsert;
 export const usersRelations = relations(users, ({ many, one }) => ({
   sessions: many(sessions),
   emailVerificationCode: one(emailVerificationCodes),
+  tasks: many(tasks),
 }));
 
 export const sessions = sqliteTable("sessions", {

@@ -8,8 +8,11 @@ import {
   registerRoute,
   requestResetPasswordRoute,
 } from "./auth";
+import docsRoute from "../routes/docs";
 
 const docs = new OpenAPIHono();
+
+docs.route("/", docsRoute);
 
 function createResponse() {
   return {

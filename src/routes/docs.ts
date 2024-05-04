@@ -2,6 +2,7 @@ import { swaggerUI } from "@hono/swagger-ui";
 import { OpenAPIHono, z } from "@hono/zod-openapi";
 
 import docs from "../docs";
+import taskDocs from "../docs/task";
 
 const docsRoute = new OpenAPIHono();
 
@@ -11,6 +12,8 @@ docsRoute.openAPIRegistry.registerComponent("securitySchemes", "Bearer", {
 });
 
 docsRoute.route("/", docs);
+docsRoute.route("/", taskDocs);
+
 docsRoute.doc("/specs", {
   openapi: "3.0.0",
   info: {

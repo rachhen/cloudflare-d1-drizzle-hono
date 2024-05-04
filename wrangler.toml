@@ -9,9 +9,9 @@ node_compat = true
 # binding = "MY_KV_NAMESPACE"
 # id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# [[r2_buckets]]
-# binding = "MY_BUCKET"
-# bucket_name = "my-bucket"
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "firstbucket"
 
 [[d1_databases]]
 binding = "DB"                                       # i.e. available in your Worker on env.DB
