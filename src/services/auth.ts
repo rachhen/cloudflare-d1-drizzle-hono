@@ -9,7 +9,7 @@ import { eq } from "drizzle-orm";
 import {
   LoginInput,
   RegisterInput,
-  SendResetPasswordInput,
+  RequestResetPasswordInput,
   VerificationCodeInput,
 } from "../schema/auth";
 import {
@@ -107,7 +107,7 @@ export const emailVerification = async (
 
 export const sendResetPassword = async (
   c: Context,
-  input: SendResetPasswordInput
+  input: RequestResetPasswordInput
 ) => {
   const user = await c.var.db.query.users.findFirst({
     where: eq(users.email, input.email),

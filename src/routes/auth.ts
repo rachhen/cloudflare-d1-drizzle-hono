@@ -5,9 +5,10 @@ import { zValidator } from "@hono/zod-validator";
 import { MyEnv } from "../types/env";
 import {
   LoginSchema,
+  NewResetPasswordSchema,
   RegisterSchema,
-  sendResetPasswordSchema,
-  verificationCodeSchema,
+  RequestResetPasswordSchema,
+  VerificationCodeSchema,
 } from "../schema/auth";
 import {
   emailVerification,
@@ -45,7 +46,7 @@ auth.post("/login", zValidator("json", LoginSchema), async (c) => {
 
 auth.post(
   "/email-verification",
-  zValidator("json", verificationCodeSchema),
+  zValidator("json", VerificationCodeSchema),
   requiredAuth,
   async (c) => {
     const lucia = c.var.lucia;
@@ -61,7 +62,7 @@ auth.post(
 
 auth.post(
   "/reset-password",
-  zValidator("json", sendResetPasswordSchema),
+  zValidator("json", RequestResetPasswordSchema),
   rateLimiter(),
   async (c) => {
     const input = c.req.valid("json");
@@ -73,7 +74,7 @@ auth.post(
 
 auth.post(
   "/reset-password/:token",
-  zValidator("json", z.object({ newPassword: z.string().min(6) })),
+  zValidator("json", NewResetPasswordSchema),
   rateLimiter(),
   async (c) => {
     const input = c.req.valid("json");

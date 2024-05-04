@@ -1,6 +1,13 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 
-import { currentUserRoute, loginRoute, registerRoute } from "./auth";
+import {
+  currentUserRoute,
+  emailVerificationRoute,
+  loginRoute,
+  newResetPasswordRoute,
+  registerRoute,
+  requestResetPasswordRoute,
+} from "./auth";
 
 const docs = new OpenAPIHono();
 
@@ -23,6 +30,18 @@ docs.openapi(registerRoute, async (c) => {
 
 docs.openapi(loginRoute, (c) => {
   return c.json(createResponse(), 200);
+});
+
+docs.openapi(emailVerificationRoute, (c) => {
+  return c.json(createResponse(), 200);
+});
+
+docs.openapi(requestResetPasswordRoute, (c) => {
+  return c.json({ message: "Email sent" }, 200);
+});
+
+docs.openapi(newResetPasswordRoute, (c) => {
+  return c.json({ message: "Email sent" }, 200);
 });
 
 docs.openapi(currentUserRoute, (c) => {

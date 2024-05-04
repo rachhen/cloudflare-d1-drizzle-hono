@@ -26,19 +26,27 @@ export const LoginSchema = z
   })
   .openapi("LoginInput");
 
-export const verificationCodeSchema = z
+export const VerificationCodeSchema = z
   .object({
     code: z.string(),
   })
   .openapi("VerificationCodeInput");
 
-export const sendResetPasswordSchema = z
+export const RequestResetPasswordSchema = z
   .object({
     email: z.string().email(),
+  })
+  .openapi("RequestResetPasswordInput");
+
+export const NewResetPasswordSchema = z
+  .object({
+    newPassword: z.string().min(6),
   })
   .openapi("SendResetPasswordInput");
 
 export type RegisterInput = z.infer<typeof RegisterSchema>;
 export type LoginInput = z.infer<typeof LoginSchema>;
-export type VerificationCodeInput = z.infer<typeof verificationCodeSchema>;
-export type SendResetPasswordInput = z.infer<typeof sendResetPasswordSchema>;
+export type VerificationCodeInput = z.infer<typeof VerificationCodeSchema>;
+export type RequestResetPasswordInput = z.infer<
+  typeof RequestResetPasswordSchema
+>;
