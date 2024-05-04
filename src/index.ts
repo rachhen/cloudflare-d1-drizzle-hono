@@ -15,7 +15,7 @@ app.use(dbMiddleware);
 app.use(luciaMiddleware);
 app.use(logger());
 
-app.route("/", auth);
+app.route("/auth", auth);
 app.route("/tasks", task);
 app.route("/docs", docsRoute);
 

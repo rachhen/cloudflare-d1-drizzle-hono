@@ -13,7 +13,7 @@ import { ErrorSchema } from "../schema/error";
 
 export const registerRoute = createRoute({
   method: "post",
-  path: "/api/register",
+  path: "/api/auth/register",
   tags: ["Auth"],
   request: {
     body: {
@@ -47,7 +47,7 @@ export const registerRoute = createRoute({
 
 export const loginRoute = createRoute({
   method: "post",
-  path: "/api/login",
+  path: "/api/auth/login",
   tags: ["Auth"],
   request: {
     body: {
@@ -81,7 +81,7 @@ export const loginRoute = createRoute({
 
 export const emailVerificationRoute = createRoute({
   method: "post",
-  path: "/api/email-verification",
+  path: "/api/auth/email-verification",
   tags: ["Auth"],
   request: {
     body: {
@@ -115,7 +115,7 @@ export const emailVerificationRoute = createRoute({
 
 export const requestResetPasswordRoute = createRoute({
   method: "post",
-  path: "/api/reset-password",
+  path: "/api/auth/reset-password",
   tags: ["Auth"],
   request: {
     body: {
@@ -149,7 +149,7 @@ export const requestResetPasswordRoute = createRoute({
 
 export const newResetPasswordRoute = createRoute({
   method: "post",
-  path: "/api/reset-password/{token}",
+  path: "/api/auth/reset-password/{token}",
   tags: ["Auth"],
   request: {
     params: z.object({
@@ -186,7 +186,7 @@ export const newResetPasswordRoute = createRoute({
 
 export const currentUserRoute = createRoute({
   method: "get",
-  path: "/api/me",
+  path: "/api/auth/me",
   tags: ["Auth"],
   security: [{ Bearer: [] }],
   responses: {
