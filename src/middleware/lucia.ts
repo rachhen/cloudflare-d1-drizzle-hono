@@ -23,6 +23,7 @@ interface DatabaseUserAttributes {
   email: string;
   fullName: string | null;
   emailVerified: boolean;
+  createdAt: Date;
 }
 
 const luciaMiddleware = createMiddleware<MyEnv>(async (c, next) => {
@@ -41,6 +42,7 @@ const luciaMiddleware = createMiddleware<MyEnv>(async (c, next) => {
         email: attributes.email,
         fullName: attributes.fullName,
         emailVerified: attributes.emailVerified,
+        createdAt: attributes.createdAt,
       };
     },
   });

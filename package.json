@@ -8,10 +8,13 @@
     "db:migrate": "wrangler d1 migrations apply cloudflare-d1-drizzle-hono --local"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.2.2",
+    "@hono/zod-openapi": "^0.11.0",
     "@hono/zod-validator": "^0.2.1",
     "@lucia-auth/adapter-drizzle": "^1.0.7",
     "@upstash/ratelimit": "^1.1.3",
     "drizzle-orm": "^0.30.9",
+    "drizzle-zod": "^0.5.1",
     "hono": "^4.2.7",
     "lucia": "^3.2.0",
     "oslo": "^1.2.0",

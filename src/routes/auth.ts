@@ -4,8 +4,8 @@ import { zValidator } from "@hono/zod-validator";
 
 import { MyEnv } from "../types/env";
 import {
-  loginSchema,
-  registerSchema,
+  LoginSchema,
+  RegisterSchema,
   sendResetPasswordSchema,
   verificationCodeSchema,
 } from "../schema/auth";
@@ -21,7 +21,7 @@ import { rateLimiter } from "../middleware/rate-limiter";
 
 const auth = new Hono<MyEnv>();
 
-auth.post("/register", zValidator("json", registerSchema), async (c) => {
+auth.post("/register", zValidator("json", RegisterSchema), async (c) => {
   const lucia = c.get("lucia");
   const input = c.req.valid("json");
   const user = await register(c, input);
@@ -32,7 +32,7 @@ auth.post("/register", zValidator("json", registerSchema), async (c) => {
   return c.json({ user, token: sessionCookie.value }, 201);
 });
 
-auth.post("/login", zValidator("json", loginSchema), async (c) => {
+auth.post("/login", zValidator("json", LoginSchema), async (c) => {
   const lucia = c.get("lucia");
   const input = c.req.valid("json");
   const user = await login(c, input);
@@ -88,5 +88,9 @@ auth.post(
     });
   }
 );
+
+auth.get("/me", requiredAuth, (c) => {
+  return c.json(c.var.user);
+});
 
 export default auth;
